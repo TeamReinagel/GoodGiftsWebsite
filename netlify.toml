@@ -28,3 +28,6 @@
 
 [build.processing.images]
   compress = true 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
