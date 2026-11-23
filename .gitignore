@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local secrets (Stripe keys). Never commit.
+.env
+.env.*
+!.env.example
+.netlify

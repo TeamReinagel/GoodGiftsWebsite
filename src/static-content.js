@@ -3,6 +3,9 @@ import Contact from './Pages/Contact.svelte';
 import EinkornSourdough from './Pages/EinkornSourdough.svelte';
 import Success from './Pages/Success.svelte';
 import StorybookSettlement from './Pages/StorybookSettlement.svelte';
+import Cart from './Pages/Cart.svelte';
+import OrderSuccess from './Pages/OrderSuccess.svelte';
+import { catalog } from '../shared/catalog.js';
 
 const DefaultPage = Home;
 export const pages = [
@@ -10,7 +13,9 @@ export const pages = [
   { path: '/contact', href: '/contact', name: 'Contact', component: Contact, showInMainNav: true },
   { path: '/storybook_settlement', href: '/storybook_settlement', name: 'Storybook Settlement', component: StorybookSettlement, showInMainNav: false, useLayout: false },
   { path: '/product/einkorn-sourdough-whey', href: '/product/einkorn-sourdough-whey', name: 'Einkorn Sourdough', component: EinkornSourdough, showInMainNav: false },
+  { path: '/cart', href: '/cart', name: 'Cart', component: Cart, showInMainNav: true },
   { path: '/success', href: '/success', name: 'Success', component: Success, showInMainNav: false },
+  { path: '/order-success', href: '/order-success', name: 'Order Confirmed', component: OrderSuccess, showInMainNav: false },
 ]
 
 const address = (line1, city, state, zip5, mapLink) => ({ line1, city, state, zip5, mapLink, toString: () => `${line1}, ${city}, ${state}, ${zip5}`});
@@ -32,17 +37,7 @@ const site = ({
     }
   });
   
-// { id, name, price, imageUrl, status }
-export const products = [
-  { id: 3, name: 'Einkorn Jumbo Hamburger Buns', price: 15, imageUrl: '/hamburgerbuns.jpg', status: 'Available' },
-  { id: 4, name: 'Artisanal Einkorn Sourdough Boule with Whey', price: 15, imageUrl: '/sourdough.jpg', status: 'New', detailsPage: '/product/einkorn-sourdough-whey' },
-  { id: 2, name: 'Einkorn Vanilla Cake', price: 36, imageUrl: '/cake.jpg', status: 'Available' },
-  { id: 1, name: 'Free-Range Natural Chicken Eggs (Dozen)', price: 6, imageUrl: '/chickenegg.jpg', status: 'Available' },
-  { id: 2, name: 'Free-Range Natural Duck Eggs (Dozen)', price: 8, imageUrl: '/eggs.jpg', status: 'Available' },
-  { id: 3, name: 'Christmas Coffee Blend', price: 18, imageUrl: 'christmascoffee.jpg', status: 'Available' },
-  { id: 2, name: 'Limited Edition Christmas Gift Set', price: 92, imageUrl: '/christmasgiftset.jpg', status: 'Available' },
-  { id: 2, name: 'Einkorn Christmas Cookies (6-pack)', price: 12, imageUrl: '/christmascookies.jpg', status: 'Available' },
-  { id: 1, name: 'Tick Repellent Spray (2-pack)', price: 38, imageUrl: '/tickspray.jpg', status: 'Available' },
-]
+// Products now live in shared/catalog.js so the checkout function uses the same prices.
+export const products = catalog;
 
 export default site;
